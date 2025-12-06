@@ -1,0 +1,77 @@
+{
+    "name": "Crypto RAG Experiment Test Dataset",
+    "description": "用于测试 RAG vs Pure Agent 在加密货币领域的表现",
+    "source": "Bitcoin Whitepaper + Ethereum Whitepaper",
+    "questions": [
+        {
+            "id": 1,
+            "question": "比特币白皮书中提到的'时间戳服务器'是什么？它如何工作？",
+            "category": "mechanism",
+            "difficulty": "medium",
+            "reference": "时间戳服务器通过对区块进行哈希来证明数据在特定时间存在，每个时间戳在其哈希中包含前一个时间戳，形成链式结构"
+        },
+        {
+            "id": 2,
+            "question": "解释比特币如何解决双重支付问题？",
+            "category": "problem_solving",
+            "difficulty": "hard",
+            "reference": "通过点对点时间戳服务器生成交易时间顺序的计算证明，只有第一笔交易被认可，后续重复支付会被拒绝"
+        },
+        {
+            "id": 3,
+            "question": "比特币网络中的'工作量证明'具体是如何实现的？",
+            "category": "mechanism",
+            "difficulty": "hard",
+            "reference": "工作量证明涉及扫描某个值（nonce），使区块的哈希值以特定数量的零位开始，类似 Adam Back 的 Hashcash"
+        },
+        {
+            "id": 4,
+            "question": "比特币白皮书中的'简化支付验证'(SPV)是什么？",
+            "category": "mechanism",
+            "difficulty": "medium",
+            "reference": "用户只需保留最长工作量证明链的区块头副本，通过查询网络节点获取 Merkle 分支来验证交易"
+        },
+        {
+            "id": 5,
+            "question": "比特币的激励机制是如何设计的？",
+            "category": "tokenomics",
+            "difficulty": "medium",
+            "reference": "区块的第一笔交易是特殊交易，创造归区块创建者所有的新币，这激励节点支持网络，并提供一种将币引入流通的方式"
+        },
+        {
+            "id": 6,
+            "question": "比特币网络如何处理隐私问题？",
+            "category": "privacy",
+            "difficulty": "medium",
+            "reference": "通过保持公钥匿名来实现隐私，公众可以看到交易，但无法将交易与特定人员关联，类似股票交易所的信息发布模式"
+        },
+        {
+            "id": 7,
+            "question": "比特币白皮书中的'交易'结构是怎样的？",
+            "category": "structure",
+            "difficulty": "hard",
+            "reference": "电子币被定义为数字签名链，每个所有者通过签署前一笔交易的哈希值和下一个所有者的公钥来转移币"
+        },
+        {
+            "id": 8,
+            "question": "什么是比特币的Merkle树？它有什么作用？",
+            "category": "mechanism",
+            "difficulty": "hard",
+            "reference": "Merkle树用于压缩区块中的交易，只需保留根哈希即可验证任何交易是否包含在区块中，节省存储空间"
+        },
+        {
+            "id": 9,
+            "question": "比特币网络如何防止攻击者篡改历史交易？",
+            "category": "security",
+            "difficulty": "hard",
+            "reference": "攻击者需要重做该区块及其后所有区块的工作量证明，然后追赶并超过诚实节点的工作，概率随区块增加呈指数下降"
+        },
+        {
+            "id": 10,
+            "question": "比特币白皮书的作者是谁？论文的核心贡献是什么？",
+            "category": "general",
+            "difficulty": "easy",
+            "reference": "作者是中本聪(Satoshi Nakamoto)，核心贡献是提出了一个不需要可信第三方的电子支付系统"
+        }
+    ]
+}
