@@ -9,12 +9,20 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# API Key validation
-api_key = os.getenv("GOOGLE_API_KEY")
-if not api_key:
-    raise ValueError("GOOGLE_API_KEY environment variable not found. Please check your .env file")
+_CONFIGURED_API_KEY = None
 
-genai.configure(api_key=api_key)
+
+def _configure_genai() -> str:
+    api_key = os.getenv("GOOGLE_API_KEY")
+    if not api_key:
+        raise ValueError("GOOGLE_API_KEY environment variable not found. Please check your .env file")
+
+    global _CONFIGURED_API_KEY
+    if _CONFIGURED_API_KEY != api_key:
+        genai.configure(api_key=api_key)
+        _CONFIGURED_API_KEY = api_key
+
+    return api_key
 
 
 class PureAgent:
@@ -24,6 +32,7 @@ class PureAgent:
     
     def __init__(self, model_name: str = "gemini-2.5-flash"):
         """Initialize the Pure Agent with Gemini model"""
+        _configure_genai()
         try:
             self.model = genai.GenerativeModel(model_name)
         except Exception as e:
